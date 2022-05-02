@@ -20,6 +20,10 @@ inputs:
     description: 'Unzip target directory'
     default: .
     required: false
+  path:
+    description: S3 path
+    required: false
+    default: ''
 runs:
   using: composite
   steps:
@@ -31,7 +35,7 @@ runs:
         aws_access_key_id: ${{ inputs.aws_access_key_id }}
         aws_secret_access_key: ${{ inputs.aws_secret_access_key }}
         aws_region: ${{ inputs.aws_region }}
-        source: s3://${{ inputs.bucket }}/${{ github.repository }}/${{ inputs.filename }}.zip
+        source: s3://${{ inputs.bucket }}/${{ github.repository }}/${{ inputs.path }}${{ inputs.filename }}.zip
         destination: ${{ inputs.context }}/${{ inputs.filename }}.zip
     -
       name: Unzip
