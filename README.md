@@ -18,6 +18,7 @@ Download an artifact from S3
 | aws_access_key_id | AWS Access Key ID | `true` |  |
 | aws_secret_access_key | AWS Secret Access Key | `true` |  |
 | context | Unzip target directory | `false` | . |
+| path | S3 path | `false` |  |
 
 
 
