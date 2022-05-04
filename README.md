@@ -1,6 +1,6 @@
 # Download S3 Artifact
 ```yaml
-- uses: aquacloud-dev/download-artifact-action@main
+- uses: aquacloud-dev/download-artifact-action@v1.1
   with:
     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
