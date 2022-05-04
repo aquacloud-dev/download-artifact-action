@@ -8,8 +8,8 @@
     bucket: ${{ secrets.S3_BUCKET_NAME }}
     path: /${{ github.sha }} # path on s3
     filename: dist # without zip extension!
-	  extension: zip
-	  output: . # unzip output folder
+    extension: zip
+    output: . # unzip output folder
     context: . # where to download the zip
 ```
 
