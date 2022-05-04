@@ -4,9 +4,6 @@ inputs:
   bucket:
     description: 'S3 bucket'
     required: true
-  filename:
-    description: 'Target directory'
-    required: true
   aws_region:
     description: 'S3 region'
     required: true
@@ -16,14 +13,18 @@ inputs:
   aws_secret_access_key:
     description: 'AWS Secret Access Key'
     required: true
+  output:
+    description: 'Unzip output'
+    default: '.'
+    required: false
   context:
-    description: 'Unzip target directory'
-    default: .
+    description: 'Download path'
+    default: '.'
     required: false
-  path:
-    description: S3 path
-    required: false
-    default: ''
+  filename:
+    description: 'Remote zip file'
+    required: true
+
 runs:
   using: composite
   steps:
@@ -39,6 +40,7 @@ runs:
         destination: ${{ inputs.context }}/${{ inputs.filename }}.zip
     -
       name: Unzip
-      uses: montudor/action-zip@v1
-      with:
-        args: unzip -qq ${{ inputs.context }}/${{ inputs.filename }}.zip -d ${{ inputs.context }}/${{ inputs.filename }}
+      shell: bash
+      run: |
+        cd ${{ inputs.context }}
+        unzip -qq ${{ inputs.filename }}.zip -d ${{ inputs.output }}
